@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ruda:wght@400;600;700&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header{
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 1px 2px 10px #000;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    font-family: "poppins", sans-serif;
+    background-color: #ddd;
+}
+
+nav{
+    display: block;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h3 {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.logo img {
+    width: 20%;
+    object-fit: cover;
+}
+
+nav ul {
+    display: block;
+    flex-basis: 20%;
+    flex-grow: 1; /* add this */
+    list-style: none;
+    margin: 10px;
+    padding: none;
+}
+
+nav li {
+    display: inline-block;
+    flex-basis: 20%; 
+    list-style: none;
+    margin: 0 1rem; 
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    padding: 0.5rem 1rem;
+    border: 1px solid #2c3e50;
+    color: #000;
+    border-radius: 5px;
+}
+
+.search {
+    position: relative;
+}
+
+.search input {
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: inherit;
+    width: 80%;
+}
+
+.search button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.55rem;
+    outline: none;
+    border: none;
+    background-color: #2c3e50;
+    color: #fff;
+    border-radius: 0px 5px 5px 0px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.products_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 5rem 0;
+    grid-gap: 2rem;
+}
+
+.products {
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 1rem;
+}
+
+.content .Teacher {
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.content .Day {
+    color: #2c2c2c;
+}
+
+.content .Time {
+    background-color: #2c3e50;
+    padding: 0.5rem;
+    width: 60%;
+    color: #fff;
+    margin: 0.5rem 0;
+}
+
+.content .Grade {
+    background-color: #2c3e50;
+    padding: 0.5rem;
+    width: 60%;
+    color: #fff;
+    margin: 0.5rem 0;
+}
+
+.content .Kelas {
+    background-color: #2c3e50;
+    padding: 0.5rem;
+    width: 60%;
+    color: #fff;
+    margin: 0.5rem 0;
+}
+
+.selected {
+    background-color:#2c3e50; /* or any other color you prefer */
+    color: #fff; /* or any other color you prefer */
+  }
+
+  .content.monday {
+    background-color: #ffdddd;
+  }
+  
+  .content.tuesday {
+    background-color: #aed4eb;
+    color: white;
+  }
+  
+  .content.wednesday {
+    background-color: #e8a9f5;
+  }
+  
+  .content.thursday {
+    background-color: #ffdddd;
+  }
+  
+  .content.friday {
+    background-color: #aed4eb;
+    color: white;
+  }
+  
+  .content.saturday {
+    background-color: #e8a9f5;
+  }
