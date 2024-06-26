@@ -1,13 +1,13 @@
 "use strict";
 
 const gameData = [
- /*   {
+    {
         id: 1, 
         Teacher: "MS. DEA", 
         Day: "MONDAY",
         Time: "14.00",
         Grade: "GRADE 1",
-    }, */
+    }, 
 
     {
         id: 2, 
