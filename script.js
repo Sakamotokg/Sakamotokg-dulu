@@ -122,7 +122,7 @@ const gameData = [
         Time: "14.00",
         Grade: "GRADE 1",
         
-    },
+    }, 
 
  /*   {
         id: 15, 
@@ -1140,6 +1140,240 @@ const gameData = [
         Kelas: "KELAS 6",
         
     },
+
+    {
+        id: 128, 
+        Teacher: "MR. ANRE", 
+        Day: "MONDAY",
+        Time: "14.00",
+        Kelas: "GRADE 4",
+        
+    },
+
+    {
+        id: 129, 
+        Teacher: "MR. ANRE", 
+        Day: "MONDAY",
+        Time: "15.00",
+        Kelas: "GRADE 1",
+        
+    },
+
+    {
+        id: 130, 
+        Teacher: "MR. ANRE", 
+        Day: "MONDAY",
+        Time: "16.00",
+        Kelas: "GRADE 2",
+        
+    },
+
+    {
+        id: 131, 
+        Teacher: "MR. ANRE", 
+        Day: "MONDAY",
+        Time: "17.00",
+        Kelas: "GRADE 3",
+        
+    },
+
+    {
+        id: 132, 
+        Teacher: "MR. ANRE", 
+        Day: "TUESDAY",
+        Time: "14.00",
+        Kelas: "GRADE 1",
+        
+    },
+
+    {
+        id: 133, 
+        Teacher: "MR. ANRE", 
+        Day: "TUESDAY",
+        Time: "15.00",
+        Kelas: "GRADE 2",
+        
+    },
+
+    {
+        id: 134, 
+        Teacher: "MR. ANRE", 
+        Day: "TUESDAY",
+        Time: "16.00",
+        Kelas: "GRADE 5",
+        
+    },
+
+    {
+        id: 135, 
+        Teacher: "MR. ANRE", 
+        Day: "TUESDAY",
+        Time: "17.00",
+        Kelas: "GRADE 6",
+        
+    },
+
+    {
+        id: 136, 
+        Teacher: "MR. ANRE", 
+        Day: "WEDNESDAY",
+        Time: "13.00",
+        Kelas: "GRADE 3",
+        
+    },
+
+    {
+        id: 137, 
+        Teacher: "MR. ANRE", 
+        Day: "WEDNESDAY",
+        Time: "14.00",
+        Kelas: "GRADE 2",
+        
+    },
+
+    {
+        id: 138, 
+        Teacher: "MR. ANRE", 
+        Day: "WEDNESDAY",
+        Time: "15.00",
+        Kelas: "GRADE 6",
+        
+    },
+
+    {
+        id: 139, 
+        Teacher: "MR. ANRE", 
+        Day: "WEDNESDAY",
+        Time: "16.00",
+        Kelas: "GRADE 5",
+        
+    },
+
+    {
+        id: 140, 
+        Teacher: "MR. ANRE", 
+        Day: "WEDNESDAY",
+        Time: "17.00",
+        Kelas: "GRADE 4",
+        
+    },
+
+    {
+        id: 141, 
+        Teacher: "MR. ANRE", 
+        Day: "THURSDAY",
+        Time: "14.00",
+        Kelas: "GRADE 4",
+        
+    },
+
+    {
+        id: 142, 
+        Teacher: "MR. ANRE", 
+        Day: "THURSDAY",
+        Time: "15.00",
+        Kelas: "GRADE 1",
+        
+    },
+
+    {
+        id: 143, 
+        Teacher: "MR. ANRE", 
+        Day: "THURSDAY",
+        Time: "16.00",
+        Kelas: "GRADE 2",
+        
+    },
+
+    {
+        id: 144, 
+        Teacher: "MR. ANRE", 
+        Day: "THURSDAY",
+        Time: "17.00",
+        Kelas: "GRADE 3",
+        
+    },
+
+    {
+        id: 145, 
+        Teacher: "MR. ANRE", 
+        Day: "FRIDAY",
+        Time: "14.00",
+        Kelas: "GRADE 1",
+        
+    },
+
+    {
+        id: 146, 
+        Teacher: "MR. ANRE", 
+        Day: "FRIDAY",
+        Time: "15.00",
+        Kelas: "GRADE 2",
+        
+    },
+
+    {
+        id: 147, 
+        Teacher: "MR. ANRE", 
+        Day: "FRIDAY",
+        Time: "16.00",
+        Kelas: "GRADE 5",
+        
+    },
+
+    {
+        id: 148, 
+        Teacher: "MR. ANRE", 
+        Day: "FRIDAY",
+        Time: "17.00",
+        Kelas: "GRADE 6",
+        
+    },
+
+    {
+        id: 149, 
+        Teacher: "MR. ANRE", 
+        Day: "SATURDAY",
+        Time: "9.00",
+        Kelas: "GRADE 6",
+        
+    },
+
+    {
+        id: 150, 
+        Teacher: "MR. ANRE", 
+        Day: "SATURDAY",
+        Time: "10.00",
+        Kelas: "GRADE 5",
+        
+    },
+
+    {
+        id: 151, 
+        Teacher: "MR. ANRE", 
+        Day: "SATURDAY",
+        Time: "11.00",
+        Kelas: "GRADE 4",
+        
+    },
+
+    {
+        id: 152, 
+        Teacher: "MR. ANRE", 
+        Day: "SATURDAY",
+        Time: "13.00",
+        Kelas: "GRADE 3",
+        
+    },
+
+    {
+        id: 153, 
+        Teacher: "MR. ANRE", 
+        Day: "SATURDAY",
+        Time: "14.00",
+        Kelas: "GRADE 2",
+        
+    },
 ];
 /*
 const productContainer = document.querySelector(".products_wrapper")
@@ -1337,11 +1571,7 @@ function displayGameData(jadwal) {
     });
   
     const gradeFilter = selectedCategories.filter((category) => {
-      return gameData.some((data) => data.Grade === category);
-    });
-  
-    const kelasFilter = selectedCategories.filter((category) => {
-      return gameData.some((data) => data.Kelas === category);
+      return gameData.some((data) => data.Grade === category || data.Kelas === category);
     });
   
     filteredData = filteredData.filter((data) => {
@@ -1360,11 +1590,7 @@ function displayGameData(jadwal) {
       }
   
       if (gradeFilter.length > 0) {
-        isValid = isValid && gradeFilter.includes(data.Grade);
-      }
-  
-      if (kelasFilter.length > 0) {
-        isValid = isValid && kelasFilter.includes(data.Kelas);
+        isValid = isValid && (gradeFilter.includes(data.Grade) || gradeFilter.includes(data.Kelas));
       }
   
       return isValid;
