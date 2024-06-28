@@ -7,7 +7,7 @@ const gameData = [
         Day: "MONDAY",
         Time: "14.00",
         Grade: "GRADE 1",
-    }, 
+    },
 
     {
         id: 2, 
@@ -17,22 +17,22 @@ const gameData = [
         Grade: "GRADE 2",
     },
 
-  /*  {
+    {
         id: 3, 
         Teacher: "MS. DEA", 
         Day: "MONDAY",
         Time: "16.00",
         Grade: "GRADE 5",
-    }, */
+    }, 
 
-  /*  {
+    {
         id: 4, 
         Teacher: "MS. DEA", 
         Day: "MONDAY",
         Time: "17.00",
         Grade: "GRADE 6",
         
-    }, */
+    }, 
 
     {
         id: 5, 
@@ -52,14 +52,14 @@ const gameData = [
         
     },
 
-  /*  {
+    {
         id: 7, 
         Teacher: "MS. DEA", 
         Day: "TUESDAY",
         Time: "15.00",
         Grade: "GRADE 6",
         
-    }, */
+    }, 
 
     {
         id: 8, 
@@ -88,23 +88,23 @@ const gameData = [
         
     },
 
-/*    {
+    {
         id: 11, 
         Teacher: "MS. DEA", 
         Day: "WEDNESDAY",
         Time: "15.00",
         Grade: "GRADE 3",
         
-    }, */
+    }, 
 
-  /*  {
+    {
         id: 12, 
         Teacher: "MS. DEA", 
         Day: "WEDNESDAY",
         Time: "16.00",
         Grade: "GRADE 1",
         
-    }, */
+    }, 
 
     {
         id: 13, 
@@ -124,14 +124,14 @@ const gameData = [
         
     }, 
 
- /*   {
+   {
         id: 15, 
         Teacher: "MS. DEA", 
         Day: "THURSDAY",
         Time: "15.00",
         Grade: "GRADE 2",
         
-    }, */
+    }, 
 
     {
         id: 16, 
@@ -142,14 +142,14 @@ const gameData = [
         
     },
 
-   /* {
+    {
         id: 17, 
         Teacher: "MS. DEA", 
         Day: "THURSDAY",
         Time: "17.00",
         Grade: "GRADE 6",
         
-    }, */
+    }, 
 
     {
         id: 18, 
@@ -232,23 +232,23 @@ const gameData = [
         
     },
 
- /*   {
+    {
         id: 27, 
         Teacher: "MS. DEA", 
         Day: "SATURDAY",
         Time: "14.00",
         Grade: "GRADE 2",
         
-    }, */
+    }, 
 
-   /* {
+    {
         id: 28, 
         Teacher: "MS. YOLA", 
         Day: "MONDAY",
         Time: "14.00",
         Grade: "GRADE 3",
         
-    }, */
+    }, 
 
     {
         id: 29, 
@@ -367,14 +367,14 @@ const gameData = [
         
     },
 
-  /*  {
+    {
         id: 42, 
         Teacher: "MS. YOLA", 
         Day: "THURSDAY",
         Time: "16.00",
         Grade: "GRADE 1",
         
-    }, */
+    }, 
 
     {
         id: 43, 
@@ -439,14 +439,14 @@ const gameData = [
         
     },
 
-  /*  {
+    {
         id: 50, 
         Teacher: "MS. YOLA", 
         Day: "SATURDAY",
         Time: "11.00",
         Grade: "GRADE 3",
         
-    }, */
+    }, 
 
     {
         id: 51, 
@@ -538,14 +538,14 @@ const gameData = [
         
     },
 
-   /* {
+    {
         id: 61, 
         Teacher: "MS. IRMA", 
         Day: "WEDNESDAY",
         Time: "14.00",
         Grade: "GRADE 2",
         
-    }, */
+    }, 
 
     {
         id: 62, 
@@ -556,14 +556,14 @@ const gameData = [
         
     },
 
-  /*  {
+    {
         id: 63, 
         Teacher: "MS. IRMA", 
         Day: "WEDNESDAY",
         Time: "16.00",
         Grade: "GRADE 5",
         
-    }, */
+    }, 
 
     {
         id: 64, 
@@ -592,14 +592,14 @@ const gameData = [
         
     },
 
-/*    {
+    {
         id: 67, 
         Teacher: "MS. IRMA", 
         Day: "THURSDAY",
         Time: "16.00",
         Grade: "GRADE 3",
         
-    }, */
+    }, 
 
     {
         id: 68, 
@@ -844,14 +844,14 @@ const gameData = [
         
     },
 
-  /*  {
+    {
         id: 95, 
         Teacher: "MS. PUPUT", 
         Day: "FRIDAY",
         Time: "15.00",
         Kelas: "KELAS 6",
         
-    }, */
+    }, 
 
     {
         id: 96, 
@@ -1529,6 +1529,8 @@ function displayGameData(jadwal) {
   productContainer.innerHTML = displayData;
 } */
 
+  // Update the spreadsheet ID, range, and API key
+
   const productContainer = document.querySelector(".products_wrapper");
   const linksEl = document.querySelectorAll("li a");
   let selectedCategories = [];
@@ -1633,9 +1635,15 @@ function displayGameData(jadwal) {
     Object.keys(colorGroups).forEach((color) => {
       displayData += `<div class="color-group ${color}">`;
       colorGroups[color].forEach((item) => {
+        const isEnabled = localStorage.getItem(`item-${item.id}`) === 'true';
+        item.isEnabled = isEnabled;
+        const buttonClass = isEnabled? 'enabled' : 'disabled';
+        const buttonText = isEnabled? 'Full' : 'Empty';
+        const itemClass = isEnabled? 'disabled-item' : '';
+  
         displayData += `
           <div class="products">
-            <div class="content ${item.Day.toLowerCase()}">
+            <div class="content ${item.Day.toLowerCase()} ${itemClass}" style="background-color: ${isEnabled? '#e83131' : ''}">
               <h3 class="Teacher">
               ${item.Teacher}
               </h3>
@@ -1646,19 +1654,22 @@ function displayGameData(jadwal) {
               ${item.Time} 
               </h3>
               ${
-                item.Grade ?
+                item.Grade?
                 `<h3 class="Grade">
                   ${item.Grade}
                 </h3>` :
                 ''
               }
               ${
-                item.Kelas ?
+                item.Kelas?
                 `<h3 class="Kelas">
                   ${item.Kelas}
                 </h3>` :
                 ''
               }
+              <button class="${buttonClass}" data-id="${item.id}">
+                ${buttonText}
+              </button>
             </div>
           </div>
         `;
@@ -1667,4 +1678,25 @@ function displayGameData(jadwal) {
     });
   
     productContainer.innerHTML = displayData;
+  
+    // Add event listener to buttons
+    const buttons = productContainer.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        let isEnabled = e.target.classList.contains('enabled');
+  
+        localStorage.setItem(`item-${id}`, !isEnabled);
+  
+        // Update button text and class
+        e.target.classList.toggle('enabled');
+        e.target.classList.toggle('disabled');
+        e.target.textContent = isEnabled? 'Empty' : 'Full';
+  
+        // Update item class
+        const itemElement = e.target.closest('.content');
+        itemElement.classList.toggle('disabled-item');
+        itemElement.style.backgroundColor = isEnabled? '' : '#e83131';
+      });
+    });
   }

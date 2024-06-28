@@ -85,6 +85,44 @@ nav ul li a {
     border-radius: 5px;
 }
 
+button {
+    /* General button styles */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.disabled {
+    /* Styles for enabled buttons */
+    background-color: #4CAF50; /* Green */
+    color: #fff;
+  }
+  
+  button.enabled {
+    /* Styles for disabled buttons */
+    background-color: #ccc;
+    color: #666;
+  }
+  
+  button.disabled:hover {
+    /* Hover effect for enabled buttons */
+    background-color: #3e8e41; /* Darker green */
+  }
+  
+  button.enabled:hover {
+    /* Hover effect for disabled buttons */
+    background-color: #bbb;
+  }
+  
+  button:active {
+    /* Active state for all buttons */
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
 .search {
     position: relative;
 }
@@ -124,9 +162,10 @@ nav ul li a {
     border-radius: 5px;
     cursor: pointer;
 }
-
+  
 .content {
     padding: 1rem;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .content .Teacher {
@@ -192,3 +231,4 @@ nav ul li a {
   .content.saturday {
     background-color: #e8a9f5;
   }
+
