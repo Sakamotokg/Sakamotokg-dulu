@@ -1638,7 +1638,7 @@ function displayGameData(jadwal) {
         const isEnabled = localStorage.getItem(`item-${item.id}`) === 'true';
         item.isEnabled = isEnabled;
         const buttonClass = isEnabled? 'enabled' : 'disabled';
-        const buttonText = isEnabled? 'Full' : 'Empty';
+        const buttonText = isEnabled? 'Full' : 'Avail';
         const itemClass = isEnabled? 'disabled-item' : '';
   
         displayData += `
@@ -1691,7 +1691,7 @@ function displayGameData(jadwal) {
         // Update button text and class
         e.target.classList.toggle('enabled');
         e.target.classList.toggle('disabled');
-        e.target.textContent = isEnabled? 'Empty' : 'Full';
+        e.target.textContent = isEnabled? 'Avail' : 'Full';
   
         // Update item class
         const itemElement = e.target.closest('.content');
