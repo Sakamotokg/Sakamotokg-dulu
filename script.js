@@ -1697,6 +1697,7 @@ function displayGameData(jadwal) {
         const itemElement = e.target.closest('.content');
         itemElement.classList.toggle('disabled-item');
         itemElement.style.backgroundColor = isEnabled? '' : '#e83131';
+        socket.send(`item-${id}:${!isEnabled}`);
       });
     });
   }
