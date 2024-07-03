@@ -99,23 +99,23 @@ button {
     /* Styles for enabled buttons */
     background-color: #4CAF50; /* Green */
     color: #fff;
-  }
+  } 
   
-  button.enabled {
+   button.enabled {
     /* Styles for disabled buttons */
-    background-color: #ccc;
-    color: #666;
-  }
+    background-color: #666;
+    color: #ccc;
+  } 
   
-  button.disabled:hover {
+ /* button.disabled:hover { */
     /* Hover effect for enabled buttons */
-    background-color: #3e8e41; /* Darker green */
-  }
+  /*  background-color: #3e8e41; /* Darker green */
+ /* } */
   
-  button.enabled:hover {
+ /* button.enabled:hover {
     /* Hover effect for disabled buttons */
-    background-color: #bbb;
-  }
+ /*   background-color: #bbb;
+/*  } */
   
   button:active {
     /* Active state for all buttons */

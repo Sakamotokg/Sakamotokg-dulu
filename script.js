@@ -1680,24 +1680,112 @@ function displayGameData(jadwal) {
     productContainer.innerHTML = displayData;
   
     // Add event listener to buttons
+    // Add event listener to buttons
+    // Function to update button state
+
+    // Add event listener to buttons
+    // Add event listener to buttons
+    // Function to update button state
+    // Function to update button state
+    // Function to update button state
+    // Function to update button state
+
+    function updateButtonState(button, isEnabled) {
+        console.log(`Updating button state: ${isEnabled}`);
+        button.textContent = isEnabled ? 'Full' : 'Avail';
+        button.classList.toggle('active', isEnabled);
+        button.closest('.content').style.backgroundColor = isEnabled ? '#e83131' : '';
+        console.log(`Button text: ${button.textContent}`);
+        console.log(`Button background color: ${button.closest('.content').style.backgroundColor}`);
+    
+        const itemElement = button.closest('.content');
+        itemElement.classList.toggle('disabled-item', !isEnabled);
+        itemElement.style.backgroundColor = isEnabled ? '#e83131' : '';
+      
+        const teacherElement = itemElement.querySelector('.Teacher');
+        const dayElement = itemElement.querySelector('.Day');
+        const timeElement = itemElement.querySelector('.Time');
+      
+        if (isEnabled) {
+          teacherElement.style.color = '#fff';
+          dayElement.style.color = '#fff';
+          timeElement.style.color = '#fff';
+          button.style.color =  '#ccc';
+          button.style.backgroundColor =  '#666';
+        } else {
+          teacherElement.style.color = '';
+          dayElement.style.color = '';
+          timeElement.style.color = '';
+          button.style.color =  '#fff';
+          button.style.backgroundColor =  '#4CAF50';
+        }
+      }
+      
+      // Retrieve state from localStorage and update buttons
+      // Retrieve state from localStorage and update buttons
+    // Retrieve state from localStorage and update buttons
     const buttons = productContainer.querySelectorAll('button');
     buttons.forEach((button) => {
+      const id = button.dataset.id;
+      const isEnabled = localStorage.getItem(`item-${id}`) === 'true';
+      if (isEnabled === null) { // If item not found in localStorage, set default state to enabled
+        isEnabled = true;
+        localStorage.setItem(`item-${id}`, isEnabled);
+      }
+    
+      // Add event listener to buttons
       button.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
         let isEnabled = e.target.classList.contains('enabled');
-  
-        localStorage.setItem(`item-${id}`, !isEnabled);
-  
-        // Update button text and class
-        e.target.classList.toggle('enabled');
-        e.target.classList.toggle('disabled');
-        e.target.textContent = isEnabled? 'Avail' : 'Full';
-  
-        // Update item class
-        const itemElement = e.target.closest('.content');
-        itemElement.classList.toggle('disabled-item');
-        itemElement.style.backgroundColor = isEnabled? '' : '#e83131';
-        socket.send(`item-${id}:${!isEnabled}`);
+      
+        // Update isEnabled state
+        isEnabled =!isEnabled;
+      
+        // Update local storage
+        localStorage.setItem(`item-${id}`, isEnabled);
+      
+        // Update button state
+        e.target.classList.toggle('enabled', isEnabled);
+        e.target.classList.toggle('disabled',!isEnabled);
+      
+        // Update button text and background color
+        updateButtonState(e.target, isEnabled);
+      
+        // Send socket message
+        socket.send(`item-${id}:${isEnabled}`);
       });
     });
+    
+    // Socket event handler
+        socket.onmessage = (event) => {
+      const blob = event.data;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const data = reader.result;
+        console.log(`Received data: ${data}`);
+        const [itemId, isEnabled] = data.split(':');
+        console.log(`itemId: ${itemId}, isEnabled: ${isEnabled}`);
+        const itemIdWithoutPrefix = itemId.replace('item-', ''); // This will give you "6"
+        console.log(`itemIdWithoutPrefix: ${itemIdWithoutPrefix}`); 
+    
+        // Check if the element exists in the DOM
+        console.log(`Checking if element exists...`);
+        const elements = document.querySelectorAll(`[data-id="${itemIdWithoutPrefix}"]`);
+        console.log(`Elements found: ${elements.length}`);
+        console.log(`Elements:`, elements); // Log the elements array to the console
+    
+        for (const element of elements) {
+          console.log(`Element found: ${element}`);
+          const isEnabledBool = isEnabled === 'true'; // Convert string to boolean
+    
+          // Update local storage
+          localStorage.setItem(`item-${itemIdWithoutPrefix}`, isEnabledBool);
+    
+          // Update button state
+          updateButtonState(element, isEnabledBool);
+        }
+      }; 
+
+      reader.readAsText(blob);
+    };
   }
