@@ -16,7 +16,10 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('close', () => {
-    clients.splice(clients.indexOf(ws), 1);
+    const index = clients.indexOf(ws);
+    if (index!== -1) {
+      clients.splice(index, 1);
+    }
     console.log(`Client disconnected`);
   });
 });
