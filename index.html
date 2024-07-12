@@ -3352,7 +3352,7 @@ GRADE 2
         </tabLe>
 
   <script>
-    const socket = new WebSocket('ws://localhost:8080');
+    const socket = new WebSocket('wss://https://4ce4-180-252-125-19.ngrok-free.app/');
 
     // Handle WebSocket connection establishment
     socket.onopen = () => {
@@ -3360,10 +3360,14 @@ GRADE 2
     };
 
     // Handle incoming messages from the server
-    socket.onmessage = (event) => {
-      console.log(`Received message: ${event.data}`);
-      // Update your app with the received message
-    };
+     socket.onmessage = (event) => {
+    if (event.data === 'ping') {
+    socket.send('pong');
+  } else {
+    console.log(`Received message from server: ${event.data}`);
+  }
+};
+
 
     // Handle errors
     socket.onerror = (event) => {
